@@ -11,3 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.search-result div {
+  padding: 10px;
+  margin: 10px 50px;
+  border: 1px solid black;
+}
+
+.searchmatch {
+  color: red;
+}
