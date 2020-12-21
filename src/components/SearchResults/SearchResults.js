@@ -1,36 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 
-const wikiApiUrl = 'https://en.wikipedia.org/w/api.php?origin=*&action=query&list=search&srsearch=Nelson Mandela&format=json';
-
-function SearchResults() {
-  // const [title, setTitle] = useState(null);
-  // const [snippet, setSnippet] = useState(null);
-  const [results, setResults] = useState([]);
-
-
-  useEffect(() => {
-    fetch(wikiApiUrl)
-      .then((response) => response.json())
-      .then(data => {
-        setResults(data.query.search);
-      });
-
-
-    // async function getData() {
-    //   const response = await fetch(wikiApiUrl);
-    //   const data = await response.json();
-    //   setResults(data.query.search)
-    // }
-    // getData();
-    // console.log(results);
-  }, []);
-
+function SearchResults(props) {
+  
   return (
     <div className="search-result">
-      {results.map((article) => (
-        <div>
-          <h3>{article.title}</h3>
-          <p>{article.snippet}</p>
+      {props.results.map((article, index) => (
+        <div key={index}>
+          <h3>{article.title} <a href={`https://en.wikipedia.org/wiki/${article.title}`} target="_blank">(wikipedia)</a></h3>
+          <p>{ ReactHtmlParser(article.snippet) }</p>
         </div>
       ))}
     </div>

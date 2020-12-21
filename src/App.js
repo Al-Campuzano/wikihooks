@@ -1,12 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
-import SearchResults from './components/SearchResults/SearchResults';
+import SearchContainer from './components/SearchContainer/SearchContainer';
 
 function App() {
   return (
     <div className="App">
       <h1>WIKIHOOKS</h1>
-      <SearchResults />
+      <SearchContainer />
     </div>
   );
 }
